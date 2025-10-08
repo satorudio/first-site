@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Обувной магазин</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Магазин обуви</h1>
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="Поиск по товарам..."/>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Переключить тему">
+        <span class="material-icons" id="theme-icon">dark_mode</span>
+      </button>
+      <button class="cart-button" onclick="toggleCart()" title="Корзина">
+        <span class="material-icons">shopping_cart</span>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Новая коллекция уже в продаже!</h2>
+      <p>Выбирайте качественную и стильную обувь от лучших брендов по доступным ценам.</p>
+      <button onclick="scrollToProducts()">Смотреть товары</button>
+    </section>
+
+    <section id="product-list" class="product-list">
+      <div class="card" data-name="Кроссовки Nike Air Max" data-price="7499">
+        <img src="images/nike-air-max.jpg" alt="Кроссовки Nike"/>
+        <div class="card-content">
+          <h3>Кроссовки Nike Air Max</h3>
+          <p>7 499 ₽</p>
+          <button class="add-to-cart-btn" onclick="addToCart(this)">В корзину</button>
+        </div>
+      </div>
+      <div class="card" data-name="Ботинки Timberland" data-price="12990">
+        <img src="images/timberland.jpg" alt="Ботинки Timberland"/>
+        <div class="card-content">
+          <h3>Ботинки Timberland</h3>
+          <p>12 990 ₽</p>
+          <button class="add-to-cart-btn" onclick="addToCart(this)">В корзину</button>
+        </div>
+      </div>
+      <div class="card" data-name="Туфли Clarks" data-price="5990">
+        <img src="images/clarks.jpg" alt="Туфли Clarks"/>
+        <div class="card-content">
+          <h3>Туфли Clarks</h3>
+          <p>5 990 ₽</p>
+          <button class="add-to-cart-btn" onclick="addToCart(this)">В корзину</button>
+        </div>
+      </div>
+      <div class="card" data-name="Кеды Converse" data-price="4299">
+        <img src="images/converse.jpg" alt="Кеды Converse"/>
+        <div class="card-content">
+          <h3>Кеды Converse</h3>
+          <p>4 299 ₽</p>
+          <button class="add-to-cart-btn" onclick="addToCart(this)">В корзину</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-section">
+      <h2>Оформить заказ</h2>
+      <form id="order-form">
+        <label for="city">Выберите город доставки:</label>
+        <select id="city" required>
+          <option value="" disabled selected>-- Выберите город --</option>
+          <option value="Москва" data-days="3">Москва</option>
+          <option value="Санкт-Петербург" data-days="4">Санкт-Петербург</option>
+          <option value="Новосибирск" data-days="7">Новосибирск</option>
+          <option value="Екатеринбург" data-days="6">Екатеринбург</option>
+          <option value="Казань" data-days="5">Казань</option>
+        </select>
+
+        <p id="delivery-info"></p>
+
+        <label>
+          <input type="checkbox" id="agreement" required/>
+          Я принимаю <a href="#" target="_blank">Пользовательское соглашение</a>
+        </label>
+
+        <button type="submit" disabled id="order-submit">Оплатить (Фейково)</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Обувной магазин. Все права защищены.
+  </footer>
+
+  <!-- Корзина -->
+  <div class="cart-modal hidden" id="cart-modal">
+    <h3>Ваша корзина</h3>
+    <div id="cart-items"></div>
+    <p id="cart-total">Итого: 0 ₽</p>
+    <button onclick="checkout()">Оформить заказ</button>
+    <button onclick="toggleCart()">Закрыть</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
